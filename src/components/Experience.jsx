@@ -48,14 +48,6 @@ const Experience = () => {
   });
   const [transition] = useAtom(transitionAtom);
 
-  const { color, distance, attenuation, angle, anglePower } = useControls({
-    color: "#876ae5",
-    distance: 6,
-    attenuation: 2.2,
-    angle: 1,
-    anglePower: 1,
-  });
-
   return (
     <>
       <group position-y={isMobile ? -0.66 : -1}>
@@ -88,36 +80,11 @@ const Experience = () => {
               scale: isMobile ? 0.9 : 1.15,
             }}
           >
-            <Gltf src="/models/grande-arena.glb" scale={0.05}>
-              <SpotLight
-                ref={ref}
-                color={color}
-                distance={distance}
-                angle={angle}
-                attenuation={attenuation}
-                anglePower={anglePower}
-              />
-            </Gltf>
+            <Gltf src="/models/grande-arena.glb" scale={0.05}></Gltf>
           </motion.group>
         </group>
         {/* MENU */}
         <group position-y={isMobile ? 0.42 : 0.75} visible={screen === "menu"}>
-          <ambientLight intensity={1} />
-          <directionalLight
-            position={[0, 3, -3]}
-            intensity={0.5}
-            color={"green"}
-          />
-          <directionalLight
-            position={[3, 3, 3]}
-            intensity={0.5}
-            color={"red"}
-          />
-          <directionalLight
-            position={[-3, 3, 3]}
-            intensity={0.5}
-            color={"blue"}
-          />
           <Float scale={isMobile ? 0.75 : 1}>
             {knights.map((knightItem, index) => (
               <TransitionModel

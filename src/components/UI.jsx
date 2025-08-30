@@ -261,7 +261,7 @@ export const UI = () => {
           <motion.div
             key={idx}
             className="fixed top-[15%] w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4 z-10"
-            animate={cake === idx && screen === "menu" ? "visible" : "hidden"}
+            animate={item === idx && screen === "menu" ? "visible" : "hidden"}
           >
             <motion.h3
               variants={{
