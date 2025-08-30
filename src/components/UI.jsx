@@ -21,7 +21,7 @@ knights.forEach((knight) => {
 export const UI = () => {
   const [screen, setScreen] = useAtom(screenAtom);
   const [knight, setKnight] = useAtom(knightAtom);
-  const [_, setIsMobile] = useAtom(isMobileAtom);
+  const [isMobile, setIsMobile] = useAtom(isMobileAtom);
   const [transition, setTransition] = useAtom(transitionAtom);
   const timeout = useRef();
 
@@ -232,7 +232,9 @@ export const UI = () => {
             </motion.p>
 
             <motion.p
-              className="text-white/80 z-10 fixed bottom-20 left-0 w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4"
+              className={`text-white/80 z-10 fixed ${
+                isMobile ? "bottom-20" : "-bottom-0"
+              } left-0 w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4`}
               variants={{
                 visible: {
                   opacity: 1,

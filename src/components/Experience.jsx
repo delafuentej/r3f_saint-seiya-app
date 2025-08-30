@@ -88,7 +88,11 @@ const Experience = () => {
               scale: isMobile ? 0.9 : 1.15,
             }}
           >
-            <Gltf src="/models/grande-arena.glb" scale={0.05}></Gltf>
+            <Gltf
+              src="/models/grande-arena.glb"
+              scale={0.05}
+              position={[0, 1, 1]}
+            ></Gltf>
           </motion.group>
         </group>
         {/* MENU */}
