@@ -123,7 +123,6 @@ export function TransitionModel({ model, visible, ...props }) {
   useFrame(() => {
     Object.values(materials).forEach((material) => {
       if (material.userData.shader) {
-        //  material.color.setHex(0x4285f4).convertSRGBToLinear();
         material.userData.shader.uniforms.uProgression.value = MathUtils.lerp(
           transitionData.current.from,
           transitionData.current.to,
