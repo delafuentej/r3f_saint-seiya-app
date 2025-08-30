@@ -80,4 +80,12 @@ export const knights = [
     model: "artemis",
     scale: 0.95,
   },
+  {
+    name: "Loe Aiolia",
+    power: "Lightning Plasma – unleashes thousands of lightning-fast punches.",
+    description:
+      "Noble, just, and courageous, Aiolia is a natural leader. He deeply respects honor and fights to protect the innocent.",
+    model: "leo-aiolia",
+    scale: 0.95,
+  },
 ];
