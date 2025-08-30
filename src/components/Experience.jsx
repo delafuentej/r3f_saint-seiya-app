@@ -12,9 +12,9 @@ import { useControls } from "leva";
 import { useEffect, useRef, useState } from "react";
 import { degToRad, MathUtils } from "three/src/math/MathUtils.js";
 import { TransitionModel } from "./TransitionModel";
+import { knights } from "../constants";
 import {
   knightAtom,
-  knights,
   isMobileAtom,
   screenAtom,
   KNIGHT_TRANSITION_DURATION,

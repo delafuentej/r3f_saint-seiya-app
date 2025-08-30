@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 import { knights } from "../constants";
+
 export const screenAtom = atom("home");
 export const knightAtom = atom(-1);
 export const isMobileAtom = atom(false);
