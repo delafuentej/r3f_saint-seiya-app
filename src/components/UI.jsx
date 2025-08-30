@@ -98,13 +98,13 @@ export const knights = [
   },
 ];
 
-knights.forEach((cake) => {
-  useGLTF.preload(`/models/${cake.model}.glb`);
+knights.forEach((knight) => {
+  useGLTF.preload(`/models/${knight.model}.glb`);
 });
 
 export const UI = () => {
   const [screen, setScreen] = useAtom(screenAtom);
-  const [cake, setCake] = useAtom(knightAtom);
+  const [knight, setKnight] = useAtom(knightAtom);
   const [_, setIsMobile] = useAtom(isMobileAtom);
   const [transition, setTransition] = useAtom(transitionAtom);
   const timeout = useRef();
@@ -128,7 +128,7 @@ export const UI = () => {
   }, []);
 
   useEffect(() => {
-    setCake(0);
+    setKnight(0);
   }, [screen]);
   return (
     <main className="select-none text-white text-xl pointer-events-none">
@@ -261,7 +261,7 @@ export const UI = () => {
           <motion.div
             key={idx}
             className="fixed top-[15%] w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4 z-10"
-            animate={item === idx && screen === "menu" ? "visible" : "hidden"}
+            animate={knight === idx && screen === "menu" ? "visible" : "hidden"}
           >
             <motion.h3
               variants={{
@@ -419,7 +419,9 @@ export const UI = () => {
           }}
           className="fixed left-4 md:left-1/4 top-1/2 -translate-y-1/2 z-10"
           onClick={() =>
-            setCake((knight) => (knight - 1 + knights.length) % knights.length)
+            setKnight(
+              (knight) => (knight - 1 + knights.length) % knights.length
+            )
           }
         >
           <svg
@@ -459,7 +461,7 @@ export const UI = () => {
             opacity: 0,
             x: 50,
           }}
-          onClick={() => setCake((knight) => (knight + 1) % knights.length)}
+          onClick={() => setKnight((knight) => (knight + 1) % knights.length)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,10 @@
-import { ContactShadows, Float, Gltf, SpotLight } from "@react-three/drei";
+import {
+  ContactShadows,
+  Float,
+  Gltf,
+  SpotLight,
+  Environment,
+} from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import { useAtom } from "jotai";
@@ -52,6 +58,7 @@ const Experience = () => {
     <>
       <group position-y={isMobile ? -0.66 : -1}>
         {/* HOME */}
+        <Environment preset="sunset" />
         <group visible={screen === "home"}>
           <motion.group
             animate={!transition && screen === "home" ? "visible" : "hidden"}
