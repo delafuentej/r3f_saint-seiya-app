@@ -17,7 +17,7 @@ import {
   knights,
   isMobileAtom,
   screenAtom,
-  GOD_TRANSITION_DURATION,
+  KNIGHT_TRANSITION_DURATION,
   TRANSITION_DURATION,
   transitionAtom,
 } from "./UI";
@@ -41,7 +41,7 @@ const Experience = () => {
     setFadeOutShadows(true);
     const timeout = setTimeout(() => {
       setFadeOutShadows(false);
-    }, GOD_TRANSITION_DURATION * 1.42 * 1000);
+    }, KNIGHT_TRANSITION_DURATION * 1.42 * 1000);
     return () => clearTimeout(timeout);
   }, [knight]);
 
@@ -58,15 +58,16 @@ const Experience = () => {
     <>
       <group position-y={isMobile ? -0.66 : -1}>
         {/* HOME */}
+        <hemisphereLight intensity={1} groundColor="black" />
         <Environment preset="sunset" />
         <group visible={screen === "home"}>
           <motion.group
             animate={!transition && screen === "home" ? "visible" : "hidden"}
             variants={{
               visible: {
-                scale: isMobile ? 0.75 : 1,
+                scale: isMobile ? 1 : 1,
                 x: isMobile ? 0 : -1.5,
-                rotateY: degToRad(-42),
+                rotateY: degToRad(15),
                 transition: {
                   delay: TRANSITION_DURATION - 0.3,
                   duration: 1.2,
@@ -75,7 +76,7 @@ const Experience = () => {
               hidden: {
                 x: 0,
                 scale: isMobile ? 0.9 : 1.15,
-                rotateY: degToRad(-90),
+                rotateY: degToRad(-45),
                 transition: {
                   duration: 1,
                 },

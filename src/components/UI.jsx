@@ -10,7 +10,7 @@ export const transitionAtom = atom(true);
 export const TRANSITION_DELAY = 0.8;
 export const TRANSITION_DURATION = 3.2;
 
-export const GOD_TRANSITION_DURATION = 2.5;
+export const KNIGHT_TRANSITION_DURATION = 2.5;
 
 export const knights = [
   {
@@ -155,8 +155,7 @@ export const UI = () => {
         }}
         animate={transition ? "visible" : "hidden"}
       >
-        <span className="mb-10">Knights </span>
-        <span className="text-yellow-500">of the Zodiac</span>
+        <span className="text-yellow-500">Saint Seiya</span>
       </motion.h1>
       {/* HOME */}
       <motion.section
@@ -188,9 +187,9 @@ export const UI = () => {
             opacity: 0,
             y: 50,
           }}
-          className="text-6xl font-display text-white"
+          className="text-6xl font-display text-yellow-500 text-center"
         >
-          Welcome to Knights of the Zodiac
+          Saint Seiya
         </motion.h2>
         <motion.p
           variants={{
@@ -221,7 +220,7 @@ export const UI = () => {
         </motion.p>
         <motion.button
           onClick={() => transitionToScreen("menu")}
-          className="text-sm bg-transparent hover:bg-white font-semibold
+          className="text-sm bg-transparent hover:bg-yellow-500 font-semibold
            text-yellow-500 hover:text-black border-2
             border-white  transition-colors duration-500 px-4 py-2 mt-4 rounded-lg uppercase"
           variants={{
@@ -269,7 +268,7 @@ export const UI = () => {
                   opacity: 1,
                   y: 0,
                   transition: {
-                    duration: 1.5,
+                    duration: 1,
                   },
                 },
                 hidden: {
@@ -375,14 +374,14 @@ export const UI = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  duration: 1.5,
+                  duration: 1,
                 },
               },
               hidden: {
                 opacity: 0,
                 y: 50,
                 transition: {
-                  duration: 1.5,
+                  duration: 0.5,
                 },
               },
             }}
@@ -391,7 +390,7 @@ export const UI = () => {
               y: 50,
             }}
             onClick={() => transitionToScreen("home")}
-            className="bg-transparent hover:bg-white font-medium text-white hover:text-black border-2 border-white  transition-colors duration-500 px-4 py-2 mt-4 rounded-lg"
+            className="bg-transparent hover:bg-yellow-500 font-medium text-white hover:text-black border-2 border-white  transition-colors duration-500 px-4 py-2 mt-4 rounded-lg"
           >
             Back
           </motion.button>
@@ -430,7 +429,7 @@ export const UI = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-12 h-12 stroke-white/70 hover:stroke-white transition-colors duration-500"
+            className="w-12 h-12 stroke-white/70 hover:stroke-yellow-500 transition-colors duration-500"
           >
             <path
               strokeLinecap="round"
@@ -469,7 +468,7 @@ export const UI = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-12 h-12 stroke-white/70 hover:stroke-white transition-colors duration-500"
+            className="w-12 h-12 stroke-white/70 hover:stroke-yellow-500 transition-colors duration-500"
           >
             <path
               strokeLinecap="round"

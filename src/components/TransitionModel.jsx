@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import React, { useRef, useEffect, useState } from "react";
 import { MathUtils, degToRad } from "three/src/math/MathUtils.js";
 import { motion } from "framer-motion-3d";
-import { GOD_TRANSITION_DURATION } from "./UI";
+import { KNIGHT_TRANSITION_DURATION } from "./UI";
 
 //injecting shader code
 const fadeFragment = /* glsl */ `
@@ -75,7 +75,7 @@ export function TransitionModel({ model, visible, ...props }) {
         transitionData.current.started = new Date();
       }
       setAnimatedVisible(visible);
-    }, GOD_TRANSITION_DURATION * 1000);
+    }, KNIGHT_TRANSITION_DURATION * 1000);
     return () => clearTimeout(timeout);
   }, [visible]);
 
@@ -123,11 +123,12 @@ export function TransitionModel({ model, visible, ...props }) {
   useFrame(() => {
     Object.values(materials).forEach((material) => {
       if (material.userData.shader) {
+        //  material.color.setHex(0x4285f4).convertSRGBToLinear();
         material.userData.shader.uniforms.uProgression.value = MathUtils.lerp(
           transitionData.current.from,
           transitionData.current.to,
           (new Date() - transitionData.current.started) /
-            (GOD_TRANSITION_DURATION * 1000)
+            (KNIGHT_TRANSITION_DURATION * 1000)
         );
       }
     });
@@ -144,7 +145,7 @@ export function TransitionModel({ model, visible, ...props }) {
             rotateY: 0,
             y: 0,
             transition: {
-              delay: GOD_TRANSITION_DURATION * 2,
+              delay: KNIGHT_TRANSITION_DURATION * 2,
             },
           },
           fadeOut: {
