@@ -2,6 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
+import { knights } from "../constants";
 export const screenAtom = atom("home");
 export const knightAtom = atom(-1);
 export const isMobileAtom = atom(false);
@@ -11,92 +12,6 @@ export const TRANSITION_DELAY = 0.8;
 export const TRANSITION_DURATION = 3.2;
 
 export const KNIGHT_TRANSITION_DURATION = 2.5;
-
-export const knights = [
-  {
-    name: "Pegasus Seiya",
-    power:
-      "Pegasus Meteor Fist- – unleashes hundreds of punches at light speed",
-    description:
-      "The main protagonist, brave and stubborn, always fighting with hope and determination to protect Athena.",
-    model: "pegasus-seiya", //choco_bunny
-    scale: 1,
-  },
-  {
-    name: "Cisne-Hyoga",
-    power:
-      "Diamond Dust / Aurora Thunder Attack – ice techniques that freeze enemies.",
-    description:
-      "Calm and sometimes cold, he fights with elegance and carries deep feelings for his late mother.",
-    model: "cisne-hyoga",
-
-    scale: 1,
-  },
-  {
-    name: "Dragon Shiryu",
-    power:
-      "Rising Dragon Fist (Rozan Shō Ryū Ha) – a powerful upward punch like a dragon’s ascent.",
-    description:
-      "Noble and loyal, often sacrifices himself for his friends. His shield is considered the most durable among the Bronze Saints.",
-    model: "dragon-shiryu",
-    scale: 0.92,
-  },
-  {
-    name: "Andromeda-Shun",
-    power:
-      "Andromeda Chains – versatile chains for defense and offense, forming barriers and traps.",
-    description:
-      "Gentle and compassionate, dislikes violence but is incredibly powerful when forced to fight. He shares a strong bond with his brother Ikki.",
-    model: "andromeda-shun",
-    scale: 0.92,
-  },
-  {
-    name: "Phoenix-Ikki",
-    power:
-      "Phoenix Illusion Demon Fist (Hōō Genma Ken) – a mental attack trapping enemies in illusions. His Cloth and body resurrect from ashes, like the Phoenix.",
-    description:
-      "Shun’s older brother, a lone wolf with a fiery personality. Fierce, independent, and extremely strong, often appearing at critical moments.",
-    model: "phoenix-ikki",
-    scale: 0.92,
-  },
-
-  {
-    name: "Scorpio-Milo",
-    power:
-      "Scarlet Needle – a series of precise stings that paralyze and inflict unbearable pain, ending with Antares, the finishing blow.",
-    description:
-      "Proud and straightforward, Milo is fiercely loyal to Athena. Though ruthless in battle, he respects honorable opponents and shows compassion when he recognizes true courage.",
-    model: "scorpio-milo",
-    scale: 0.92,
-  },
-  {
-    name: "Libra-Dohko",
-    power:
-      "Rozan Shō Ryū Ha / Libra weapons – master of all Libra armaments and martial techniques.",
-    description:
-      "Ancient and wise, Dohko is Shiryu’s master. He balances humor with seriousness and has survived centuries of battle experience.",
-    model: "libra-dohko",
-    scale: 0.92,
-  },
-  {
-    name: "Capricorn-Shura",
-    power:
-      "Excalibur – a sword technique that can slice through anything with precision.",
-    description:
-      "AHonorable and disciplined, Shura is a master swordsman. He embodies dedication, strength, and absolute loyalty to Athena.",
-    model: "capricorn-shura",
-    scale: 0.92,
-  },
-  {
-    name: "Artemis",
-    power:
-      "Mastery of archery, control over wild animals, and lunar-based abilities.",
-    description:
-      "Independent and strong-willed, Artemis protects nature and young women. Calm yet fierce in battle, she embodies purity, agility, and a deep connection with the wilderness.",
-    model: "artemis",
-    scale: 0.92,
-  },
-];
 
 knights.forEach((knight) => {
   useGLTF.preload(`/models/${knight.model}.glb`);
@@ -314,60 +229,37 @@ export const UI = () => {
             >
               {item.power}
             </motion.p>
+
+            <motion.p
+              className="text-white/80 z-10 fixed bottom-20 left-0 w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4"
+              variants={{
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.3,
+                    duration: 1,
+                  },
+                },
+                hidden: {
+                  opacity: 0,
+                  y: 50,
+                  transition: {
+                    duration: 1.5,
+                  },
+                },
+              }}
+              initial={{
+                opacity: 0,
+                y: 50,
+              }}
+            >
+              {item.description}
+            </motion.p>
           </motion.div>
         ))}
 
         <div className="z-10 fixed bottom-4 left-0 w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4">
-          {/*   <motion.h2
-            variants={{
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 1.5,
-                },
-              },
-              hidden: {
-                opacity: 0,
-                y: 50,
-                transition: {
-                  duration: 1.5,
-                },
-              },
-            }}
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            className="text-6xl font-display"
-          >
-            La Carte
-          </motion.h2>
-          <motion.p
-            variants={{
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 1.5,
-                },
-              },
-              hidden: {
-                opacity: 0,
-                y: 50,
-                transition: {
-                  duration: 1.5,
-                },
-              },
-            }}
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            className="text-white/80"
-          >
-            item.description
-          </motion.p> */}
           <motion.button
             variants={{
               visible: {
