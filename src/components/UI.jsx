@@ -48,7 +48,9 @@ export const UI = () => {
   }, [screen]);
   return (
     <main className="select-none text-white text-xl pointer-events-none">
-      <motion.h1
+      {/* transition seite */}
+
+      <motion.div
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20
      text-white text-center font-display text-7xl md:text-8xl"
         variants={{
@@ -71,8 +73,28 @@ export const UI = () => {
         }}
         animate={transition ? "visible" : "hidden"}
       >
-        <span className="text-yellow-500">Saint Seiya</span>
-      </motion.h1>
+        <motion.img
+          src="/images/saint-seiya-500-bg.webp"
+          alt="saint-seiya"
+          className="mx-auto w-full h-auto mb-6"
+          initial={{ opacity: 0, scale: 0.5, y: 50 }}
+          animate={{ opacity: 0.9, scale: 1, y: 0 }}
+          transition={{ duration: TRANSITION_DURATION / 2, ease: "easeOut" }}
+        />
+        <motion.img
+          src="/images/atenea-500-bg.webp"
+          alt="atenea"
+          className="absolute inset-0 flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.1, y: 50 }}
+          animate={{ opacity: 0.6, scale: 0.9, y: 0 }}
+          transition={{ duration: TRANSITION_DURATION / 2, ease: "easeOut" }}
+        />
+        <span className="absolute inset-0 flex items-center justify-center text-yellow-500">
+          Saint Seiya
+        </span>
+      </motion.div>
+      {/* end transition seite */}
+
       {/* HOME */}
       <motion.section
         animate={!transition && screen === "home" ? "visible" : "hidden"}
