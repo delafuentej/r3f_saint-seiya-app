@@ -175,7 +175,7 @@ export const UI = () => {
         {knights.map((item, idx) => (
           <motion.div
             key={idx}
-            className="fixed top-[15%] w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4 z-10"
+            className="fixed top-[10%] w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4 md:p-2 z-10"
             animate={knight === idx && screen === "menu" ? "visible" : "hidden"}
           >
             <motion.h3
@@ -205,7 +205,7 @@ export const UI = () => {
               {item.name}
             </motion.h3>
             <motion.p
-              className="text-white/80"
+              className="text-white/80 md:mt-10"
               variants={{
                 visible: {
                   opacity: 1,
@@ -232,9 +232,9 @@ export const UI = () => {
             </motion.p>
 
             <motion.p
-              className={`text-white/80 z-10 fixed ${
-                isMobile ? "bottom-20" : "-bottom-0"
-              } left-0 w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4`}
+              className={`z-10 fixed left-0 bottom-20 w-full    md:relative text-center  p-4 ${
+                isMobile ? "bottom-20" : "h-full relative bottom-0"
+              }`}
               variants={{
                 visible: {
                   opacity: 1,
