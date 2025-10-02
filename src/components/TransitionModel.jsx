@@ -144,7 +144,7 @@ export function TransitionModel({ model, visible, ...props }) {
             rotateY: 0,
             y: 0,
             transition: {
-              delay: KNIGHT_TRANSITION_DURATION * 2,
+              delay: KNIGHT_TRANSITION_DURATION * 1,
             },
           },
           fadeOut: {
@@ -155,7 +155,7 @@ export function TransitionModel({ model, visible, ...props }) {
           },
         }}
       >
-        <primitive object={scene} position-y={-1} />
+        <primitive object={scene} position-y={-0.15} />
       </motion.group>
     </group>
   );

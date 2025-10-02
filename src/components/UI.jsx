@@ -86,7 +86,7 @@ export const UI = () => {
           alt="atenea"
           className="absolute inset-0 flex items-center justify-center"
           initial={{ opacity: 0, scale: 0.1, y: 50 }}
-          animate={{ opacity: 0.6, scale: 0.9, y: 0 }}
+          animate={{ opacity: 0.6, scale: 0.8, y: 0 }}
           transition={{ duration: TRANSITION_DURATION / 2, ease: "easeOut" }}
         />
         <span className="absolute inset-0 flex items-center justify-center text-yellow-500">
@@ -253,34 +253,36 @@ export const UI = () => {
               {item.power}
             </motion.p>
 
-            <motion.p
-              className={`z-10 fixed left-0 bottom-20 w-full    md:relative text-center  p-4 ${
-                isMobile ? "bottom-20" : "h-full relative bottom-0"
-              }`}
-              variants={{
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: 0.3,
-                    duration: 1,
+            {isMobile && (
+              <motion.p
+                className={`z-10 fixed left-0 bottom-20 w-full md:relative text-center  p-4 ${
+                  isMobile ? "bottom-20" : "bottom-[-10px]"
+                }`}
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      delay: 0.3,
+                      duration: 1,
+                    },
                   },
-                },
-                hidden: {
+                  hidden: {
+                    opacity: 0,
+                    y: 50,
+                    transition: {
+                      duration: 1.5,
+                    },
+                  },
+                }}
+                initial={{
                   opacity: 0,
                   y: 50,
-                  transition: {
-                    duration: 1.5,
-                  },
-                },
-              }}
-              initial={{
-                opacity: 0,
-                y: 50,
-              }}
-            >
-              {item.description}
-            </motion.p>
+                }}
+              >
+                {item.description}
+              </motion.p>
+            )}
           </motion.div>
         ))}
 

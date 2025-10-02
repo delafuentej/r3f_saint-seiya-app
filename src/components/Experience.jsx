@@ -58,7 +58,7 @@ const Experience = () => {
     <>
       <group position-y={isMobile ? -0.66 : -1}>
         {/* HOME */}
-        <hemisphereLight intensity={1} groundColor="black" />
+        <hemisphereLight intensity={1} groundColor="#1d1d1d" />
         <Environment preset="sunset" />
         <group visible={screen === "home"}>
           <motion.group
@@ -66,7 +66,7 @@ const Experience = () => {
             variants={{
               visible: {
                 scale: isMobile ? 1 : 1,
-                x: isMobile ? 0 : -1.5,
+                x: isMobile ? 0 : -1.15,
                 rotateY: degToRad(15),
                 transition: {
                   delay: TRANSITION_DURATION - 0.3,
@@ -91,7 +91,7 @@ const Experience = () => {
             <Gltf
               src="/models/grande-arena.glb"
               scale={0.05}
-              position={[0, 1, 1]}
+              position={isMobile ? [0, 1, 1.5] : [0, 1, 1]}
             ></Gltf>
           </motion.group>
         </group>
