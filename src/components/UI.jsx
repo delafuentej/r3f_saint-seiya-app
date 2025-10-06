@@ -9,10 +9,10 @@ export const knightAtom = atom(-1);
 export const isMobileAtom = atom(false);
 export const transitionAtom = atom(true);
 
-export const TRANSITION_DELAY = 0.8;
-export const TRANSITION_DURATION = 3.2;
+export const TRANSITION_DELAY = 2.5;
+export const TRANSITION_DURATION = 2.5;
 
-export const KNIGHT_TRANSITION_DURATION = 2.5;
+export const KNIGHT_TRANSITION_DURATION = 1.5;
 
 knights.forEach((knight) => {
   useGLTF.preload(`/models/${knight.model}.glb`);
@@ -198,7 +198,12 @@ export const UI = () => {
           <motion.div
             key={idx}
             className="fixed top-[10%] w-full md:w-auto md:left-1/2 md:-translate-x-1/2 text-center  p-4 md:p-2 z-10"
-            animate={knight === idx && screen === "menu" ? "visible" : "hidden"}
+            animate={
+              knight === idx && screen === "menu" && !transition
+                ? "visible"
+                : "hidden"
+            }
+            // animate={knight === idx && screen === "menu" ? "visible" : "hidden"}
           >
             <motion.h3
               variants={{
@@ -214,7 +219,7 @@ export const UI = () => {
                   y: 50,
                   transition: {
                     duration: 1,
-                    delay: 0.3,
+                    delay: 0.1,
                   },
                 },
               }}
@@ -233,7 +238,7 @@ export const UI = () => {
                   opacity: 1,
                   y: 0,
                   transition: {
-                    delay: 0.3,
+                    delay: 0.1,
                     duration: 1,
                   },
                 },
@@ -241,7 +246,7 @@ export const UI = () => {
                   opacity: 0,
                   y: 50,
                   transition: {
-                    duration: 1.5,
+                    duration: 1,
                   },
                 },
               }}
@@ -263,7 +268,7 @@ export const UI = () => {
                     opacity: 1,
                     y: 0,
                     transition: {
-                      delay: 0.3,
+                      delay: 0.1,
                       duration: 1,
                     },
                   },
@@ -271,7 +276,7 @@ export const UI = () => {
                     opacity: 0,
                     y: 50,
                     transition: {
-                      duration: 1.5,
+                      duration: 1,
                     },
                   },
                 }}

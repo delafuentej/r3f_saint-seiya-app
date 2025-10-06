@@ -59,7 +59,7 @@ const ScreenTransition = ({ transition, color }) => {
         makeDefault
         top={1}
         right={1}
-        bottom={1}
+        bottom={-1}
         left={-1}
         near={0}
         far={1}
