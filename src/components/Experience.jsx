@@ -1,14 +1,7 @@
-import {
-  ContactShadows,
-  Float,
-  Gltf,
-  SpotLight,
-  Environment,
-} from "@react-three/drei";
+import { ContactShadows, Float, Gltf, Environment } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import { useAtom } from "jotai";
-import { useControls } from "leva";
 import { useEffect, useRef, useState } from "react";
 import { degToRad, MathUtils } from "three/src/math/MathUtils.js";
 import { TransitionModel } from "./TransitionModel";
@@ -26,10 +19,11 @@ const Experience = () => {
   const ref = useRef();
   const [knight, setKnight] = useAtom(knightAtom);
   const [screen] = useAtom(screenAtom);
-  const { groundColor } = useControls({
-    groundColor: "#2d2d2d",
-  });
   const [isMobile] = useAtom(isMobileAtom);
+
+  const sunsetHDRI = "./images/hdri/venice_sunset_1k.hdr";
+
+  const groundColor = "#2d2d2d";
 
   useEffect(() => {
     setKnight(screen === "menu" ? 0 : -1);
@@ -39,9 +33,12 @@ const Experience = () => {
   const [fadeOutShadows, setFadeOutShadows] = useState(false);
   useEffect(() => {
     setFadeOutShadows(true);
-    const timeout = setTimeout(() => {
-      setFadeOutShadows(false);
-    }, KNIGHT_TRANSITION_DURATION * 1.42 * 1000);
+    const timeout = setTimeout(
+      () => {
+        setFadeOutShadows(false);
+      },
+      KNIGHT_TRANSITION_DURATION * 1.42 * 1000,
+    );
     return () => clearTimeout(timeout);
   }, [knight]);
 
@@ -49,7 +46,7 @@ const Experience = () => {
     materialShadowsHide.current.opacity = MathUtils.lerp(
       materialShadowsHide.current.opacity,
       fadeOutShadows ? 1 : 0,
-      0.02
+      0.02,
     );
   });
   const [transition] = useAtom(transitionAtom);
@@ -59,7 +56,7 @@ const Experience = () => {
       <group position-y={isMobile ? -0.66 : -1}>
         {/* HOME */}
         <hemisphereLight intensity={1} groundColor="#1d1d1d" />
-        <Environment preset="sunset" />
+        <Environment files={sunsetHDRI} />
         <group visible={screen === "home"}>
           <motion.group
             animate={!transition && screen === "home" ? "visible" : "hidden"}
